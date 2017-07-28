@@ -22,9 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/bank', card);
-app.use('/server', server);
+app.use('/hades', index);
+app.use('/hades/bank', card);
+app.use('/hades/server', server);
 app.use('*', (req, res, send) => {
   res.redirect('/')
 })
