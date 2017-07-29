@@ -10,6 +10,7 @@ var openpay = new Openpay('m8e9c6cld7mz8i0vgwox', 'sk_6085ae77df9c4ce7b091007cfa
 function addCard(req, res, next){
   var rules = {
     'name': 'required',
+    'lastname': 'required',
     'email': 'required',
     'card_number':'required',
     'holder_name':'required',
@@ -23,6 +24,7 @@ function addCard(req, res, next){
     var dataCustomer = {
       'name': req.body.name,
       'email': req.body.email,
+      'lastname': req.body.lastname
     }
     openpay.customers.create(dataCustomer, (error, customer) => {
       if(error){
@@ -81,7 +83,7 @@ function charge(req, res, next){
       if(error){
         res.send({status:"ERROR", data: error})
       }else{
-        res.send({status:"OK", charge: charge})
+        res.send({status:"OK", data:{charge: charge}})
       }
     });
   })
@@ -120,7 +122,7 @@ router.post('/addCard', (req, res, next) => {
       if(error){
         res.send({status:"ERROR", data:error})
       }else{
-        res.send({status:"OK", card:card})
+        res.send({status:"OK", data:{card:card}})
       }
     })
   })
@@ -141,7 +143,7 @@ router.get('/infoCharges/:customerId', (req, res, next) => {
     if(error){
       res.send({status:"ERROR", data: error })
     }else{
-      res.send({status:"OK", chagesList: chargesList})
+      res.send({status:"OK", data:{chagesList: chargesList}})
     }
   });
 })
@@ -153,7 +155,7 @@ router.get('/infoCards/:customerId', (req, res, next) => {
     if(error){
       res.send({status:"ERROR", data: error })
     }else{
-      res.send({status:"OK", cardsList: cardsList})
+      res.send({status:"OK", data:{cardsList: cardsList}})
     }
   });
 })
