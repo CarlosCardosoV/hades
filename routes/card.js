@@ -73,7 +73,7 @@ function charge(req, res, next){
   .then(() => {
     var customerId = req.body.customer_id;
     var chargeRequest = {
-      'card_id':req.body.card_id,
+      'source_id':req.body.card_id,
       'amount': req.body.amount,
       'description': req.body.description,
       'device_session_id':req.body.device_session_id,
