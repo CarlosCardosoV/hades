@@ -71,7 +71,7 @@ function charge(req, res, next){
   }
   indicative.validate(req.body, rules)
   .then(() => {
-    var customerId = req.body.customerId;
+    var customerId = req.body.customer_id;
     var chargeRequest = {
       'card_id':req.body.card_id,
       'amount': req.body.amount,
