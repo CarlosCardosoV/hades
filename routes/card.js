@@ -108,16 +108,17 @@ router.post('/addCard', (req, res, next) => {
     'expiration_month':'required',
     'cvv2':'required',
     'device_session_id':'required',
-    'customer_id': 'required'
+    'customer_id':'required'
   }
   indicative.validate(req.body, rules)
   .then(() => {
     var cardRequest = {
-      'card_id':req.body.card_id,
-      'amount': req.body.amount,
-      'description': req.body.description,
+      'card_number':req.body.card_number,
+      'holder_name': req.body.holder_name,
+      'expiration_year': req.body.expiration_year,
+      'expiration_month': req.body.expiration_month,
       'device_session_id':req.body.device_session_id,
-      'currency':req.body.currency //MXN, USD
+      'customer_id':req.body.customer_id
     }
     openpay.customers.cards.create(req.body.customer_id, cardRequest, (error, card) => {
       if(error){
