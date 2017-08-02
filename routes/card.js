@@ -154,7 +154,7 @@ router.get('/infoCharges/:customerId', (req, res, next) => {
 /* GET lis of cards of a specific customer */
 router.get('/infoCards/:customerId', (req, res, next) => {
   const cusId = req.params.customerId;
-  openpay.customers.cards.list(cusId,{'limit' : 1},(error, cardsList) => {
+  openpay.customers.cards.list(cusId,(error, cardsList) => {
     if(error){
       res.send({status:"ERROR", data: error })
     }else{
