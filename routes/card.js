@@ -74,6 +74,7 @@ function charge(req, res, next){
     var customerId = req.body.customer_id;
     var chargeRequest = {
       'source_id':req.body.card_id,
+      'method':"card",
       'amount': req.body.amount,
       'description': req.body.description,
       'device_session_id':req.body.device_session_id,
