@@ -118,6 +118,7 @@ router.post('/addCard', (req, res, next) => {
       'expiration_year': req.body.expiration_year,
       'expiration_month': req.body.expiration_month,
       'device_session_id':req.body.device_session_id,
+      'cvv2':req.body.cvv2,
       'customer_id':req.body.customer_id
     }
     openpay.customers.cards.create(req.body.customer_id, cardRequest, (error, card) => {
